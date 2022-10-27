@@ -65,9 +65,3 @@ export class Dados extends Casino{
     }
 }
 
-let pepe : Dados = new Dados("Nico",1000);
-
-pepe.apostar(1000);
-pepe.tirarDados();
-pepe.sumarDados();
-pepe.probabilidadDeGanar();
