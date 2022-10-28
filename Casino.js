@@ -2,16 +2,12 @@
 exports.__esModule = true;
 exports.Casino = void 0;
 var Casino = /** @class */ (function () {
-    function Casino(nombre) {
-        this.nombre = nombre;
+    function Casino() {
+        this.nombre = "Status";
+        this.apuesta = 0;
     }
-    Casino.prototype.seleccionarJuego = function () {
-    };
-    Casino.prototype.setApostar = function () {
-    };
-    Casino.prototype.getResultados = function () {
-    };
-    Casino.prototype.probabilidadDeGanar = function () {
+    Casino.prototype.apostar = function (cantidad) {
+        this.apuesta += cantidad;
     };
     return Casino;
 }());

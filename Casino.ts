@@ -5,15 +5,12 @@ constructor(){
     this.nombre = "Status";
     this.apuesta=0;
 }
-seleccionarJuego(){
-}
-Apostar(cantidad:number){
+abstract seleccionarJuego()
+apostar(cantidad:number):void{
 this.apuesta +=cantidad;
 }
-verResultados(){   //(gano x plata o perdió)
+abstract verResultados():string;
 
-} 
-probabilidadDeGanar():string{
-}
+abstract probabilidadDeGanar():string
 
 }
