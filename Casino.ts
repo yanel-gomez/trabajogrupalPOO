@@ -1,20 +1,19 @@
-export class Casino{
+export abstract class Casino{
 nombre:string;
-
-constructor(nombre:string){
-    this.nombre = nombre;
+apuesta:number;
+constructor(){
+    this.nombre = "Status";
+    this.apuesta=0;
 }
 seleccionarJuego(){
-
 }
-setApostar(){
-
+Apostar(cantidad:number){
+this.apuesta +=cantidad;
 }
-getResultados(){   //(gano x plata o perdió)
+verResultados(){   //(gano x plata o perdió)
 
 } 
-probabilidadDeGanar(){
-
+probabilidadDeGanar():string{
 }
 
 }
