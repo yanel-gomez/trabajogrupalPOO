@@ -23,9 +23,7 @@ export class Dados extends Casino{
     seleccionarJuego(){
 
     }
-    public apostar(plata:number){
-        this.apuesta = plata + this.apuesta
-    }
+    
     public verResultados():string{
     let respuesta :string = "No ganaste , intenta de nuevo ";
         if(this.dado1 === this.dado2)
@@ -53,7 +51,7 @@ export class Dados extends Casino{
     }
     
    
-    public probabilidadDeGanar(): void {
+    public probabilidadDeGanar(): string {
     let n : number = 1; //cantidad de veces que tira
     let probCara : number = 1/36; //probabilidad de que salga una cara del dado
     let probFinal : number = 1;
@@ -61,7 +59,7 @@ export class Dados extends Casino{
     for (let i: number = 0; i <= n; i++) {
     probFinal = probFinal * probCara;
     }
-    console.log ("La probabilidad es: ", probFinal );
+    return "La probabilidad es: " + probFinal ;
     }
 }
 
