@@ -1,20 +1,7 @@
-export class Casino{
-nombre:string;
-
-constructor(nombre:string){
-    this.nombre = nombre;
-}
-seleccionarJuego(){
-
-}
-setApostar(){
-
-}
-getResultados(){   //(gano x plata o perdió)
-
-} 
-probabilidadDeGanar(){
-
-}
+export interface Casino{
+seleccionarJuego():string;
+apostar(cantidad:number):void;
+verResultados():string;
+probabilidadDeGanar():string
 
 }
