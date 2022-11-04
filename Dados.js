@@ -3,8 +3,6 @@ exports.__esModule = true;
 exports.Dados = void 0;
 var Dados = /** @class */ (function () {
     function Dados() {
-        this.dado1 = 0;
-        this.dado2 = 0;
         this.apuesta = 0;
     }
     Dados.prototype.apostar = function (cantidad) {
@@ -15,7 +13,9 @@ var Dados = /** @class */ (function () {
         this.dado2 = Math.floor(Math.random() * (6 - 1)) + 1;
     };
     Dados.prototype.sumarDados = function () {
-        var suma = this.dado1 + this.dado2;
+        var dado1 = this.dado1;
+        var dado2 = this.dado2;
+        var suma = dado1 + dado2;
         return suma;
     };
     Dados.prototype.seleccionarJuego = function () {
@@ -29,18 +29,19 @@ var Dados = /** @class */ (function () {
         else {
             respuesta = "No ganaste , intenta de nuevo ";
         }
+        console.log("salieron los dados: " + this.dado1 + " " + this.dado2);
         return respuesta;
     };
-    Dados.prototype.intentos = function (apuesta) {
+    Dados.prototype.intentos = function (numeroApostado) {
         var intentos = 0;
         var continuar = true;
         while (intentos < 3 && continuar === true) {
-            if (this.sumarDados() === apuesta) {
-                console.log("Felicitaciones ganaste");
+            if (this.sumarDados() === numeroApostado) {
+                console.log("Felicitaciones ," + "salieron los dados" + this.dado1 + " " + this.dado2 + "ganaste");
                 continuar = false;
             }
             else {
-                console.log("No ganaste nada");
+                console.log("Salieron los dados: " + this.dado1 + " " + this.dado2 + " Intenta nuevamente");
             }
             intentos++;
         }
@@ -60,3 +61,9 @@ var Dados = /** @class */ (function () {
     return Dados;
 }());
 exports.Dados = Dados;
+var Dados1 = new Dados();
+//console.log(Dados1.seleccionarJuego());
+Dados1.apostar(2000);
+Dados1.tirarDados();
+Dados1.sumarDados();
+Dados1.intentos(12);

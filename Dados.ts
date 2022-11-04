@@ -6,10 +6,9 @@ export class Dados implements Casino {
     private apuesta: number;
 
     constructor() {
-        this.dado1 = 0;
-        this.dado2 = 0;
-        this.apuesta=0;
+        this.apuesta = 0;
     }
+
     public apostar(cantidad: number): void {
         this.apuesta = cantidad + this.apuesta
     }
@@ -19,10 +18,12 @@ export class Dados implements Casino {
         this.dado1 = Math.floor(Math.random() * (6 - 1)) + 1;
         this.dado2 = Math.floor(Math.random() * (6 - 1)) + 1;
     }
+
     public sumarDados(): number {
-        let suma: number = this.dado1 + this.dado2;
+        let suma:number = this.dado1 + this.dado2;
         return suma
     }
+
     public seleccionarJuego(): string {
         return "***Bienvenido al Juego de Dados***" + '\n';
     }
@@ -32,21 +33,23 @@ export class Dados implements Casino {
         if (this.dado1 === this.dado2){
             respuesta = "Ganaste: " + (2 * this.apuesta) + " Felicidades ";
         }else{
-            respuesta = "No ganaste , intenta de nuevo "}
+            respuesta = "No ganaste , intenta de nuevo "
+        }
+        console.log("salieron los dados: " + this.dado1 +" "+ this.dado2);
         return respuesta
     }
 
 
-    public intentos(apuesta: number) {
+    public intentos(numeroApostado: number):void {
         let intentos: number = 0;
         let continuar: boolean = true
 
         while (intentos < 3 && continuar === true) {
-            if (this.sumarDados() === apuesta) {
-                console.log("Felicitaciones ganaste");
+            if (this.sumarDados() === numeroApostado) {
+                console.log("Felicitaciones ,"+"salieron los dados: "+this.dado1+" "+this.dado2+" ganaste");
                 continuar = false;
             } else {
-                console.log("No ganaste nada");
+                console.log("Salieron los dados: "+this.dado1+" "+this.dado2 +" Intenta nuevamente");
             }
             intentos++;
         }
