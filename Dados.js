@@ -13,9 +13,7 @@ var Dados = /** @class */ (function () {
         this.dado2 = Math.floor(Math.random() * (6 - 1)) + 1;
     };
     Dados.prototype.sumarDados = function () {
-        var dado1 = this.dado1;
-        var dado2 = this.dado2;
-        var suma = dado1 + dado2;
+        var suma = this.dado1 + this.dado2;
         return suma;
     };
     Dados.prototype.seleccionarJuego = function () {
@@ -36,34 +34,25 @@ var Dados = /** @class */ (function () {
         var intentos = 0;
         var continuar = true;
         while (intentos < 3 && continuar === true) {
+            this.tirarDados();
             if (this.sumarDados() === numeroApostado) {
-                console.log("Felicitaciones ," + "salieron los dados" + this.dado1 + " " + this.dado2 + "ganaste");
+                console.log("Felicitaciones ," + " salieron los dados: " + this.dado1 + " " + this.dado2 + " ganaste");
                 continuar = false;
             }
             else {
                 console.log("Salieron los dados: " + this.dado1 + " " + this.dado2 + " Intenta nuevamente");
             }
             intentos++;
+            this.tirarDados();
         }
         if (continuar === true) {
             console.log("acabaste los intentos");
         }
     };
     Dados.prototype.probabilidadDeGanar = function () {
-        var n = 1; //cantidad de veces que tira
-        var probCara = 1 / 36; //probabilidad de que salga una cara del dado
-        var probFinal = 1;
-        for (var i = 0; i <= n; i++) {
-            probFinal = probFinal * probCara;
-        }
-        return "La probabilidad es: " + probFinal;
+        var h = "";
+        return h;
     };
     return Dados;
 }());
 exports.Dados = Dados;
-var Dados1 = new Dados();
-//console.log(Dados1.seleccionarJuego());
-Dados1.apostar(2000);
-Dados1.tirarDados();
-Dados1.sumarDados();
-Dados1.intentos(12);
