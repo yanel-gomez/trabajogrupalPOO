@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/yanel-gomez/trabajogrupalPOO/issues"
   },
-  "homepage": "https://github.com/yanel-gomez/trabajogrupalPOO#readme"
+  "homepage": "https://github.com/yanel-gomez/trabajogrupalPOO#readme",
+  "devDependencies": {
+    "@types/node": "^18.11.9"
+  }
 }

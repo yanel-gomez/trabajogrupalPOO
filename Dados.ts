@@ -1,11 +1,12 @@
 import { Casino } from "./Casino";
 
-export class Dados implements Casino {
+export class Dados extends Casino {
     private dado1: number;
     private dado2: number;
-    private apuesta: number;
+    protected apuesta: number;
 
     constructor() {
+        super();
         this.apuesta = 0;
     }
 

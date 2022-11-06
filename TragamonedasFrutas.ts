@@ -1,7 +1,9 @@
-import { Casino } from "./Casino";
+var fs = require("fs");
+
+
 import { Tragamonedas } from "./Tragamonedas";
 
-export class TragamonedasFrutas extends Tragamonedas implements Casino{
+export class TragamonedasFrutas extends Tragamonedas{
 
     protected rodillo1: string[];
     protected rodillo2: string[];
@@ -57,5 +59,20 @@ export class TragamonedasFrutas extends Tragamonedas implements Casino{
         }
         return "La probabilidad es: " + probabilidad;
     }
+    leerArchivo(path: string): string {
+        let archivo: string = fs.readFileSync(path, "utf-8");
+        return archivo;
+      }
+      escribirArchivo(archivo, nuevoTexto) {
+        let textoBase: string = fs.readFileSync(archivo, "utf-8");
+        textoBase += nuevoTexto;
+        fs.writeFile(archivo, textoBase, function (err) {
+          if (err) {
+            return console.log(err);
+          }
+    
+          console.log("El archivo fue creado correctamente");
+        });
+      }
 }
     

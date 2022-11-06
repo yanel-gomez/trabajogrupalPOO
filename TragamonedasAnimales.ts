@@ -1,7 +1,9 @@
-import { Casino } from "./Casino";
+var fs = require("fs");
+
+
 import { Tragamonedas } from "./Tragamonedas";
 
-export class TragamonedasAnimales extends Tragamonedas implements Casino{
+export class TragamonedasAnimales extends Tragamonedas{
     protected tematica:string;
     protected apuesta:number;
     protected rodillo1: string[];
@@ -42,6 +44,7 @@ export class TragamonedasAnimales extends Tragamonedas implements Casino{
         let pos5: number;
         let resultado:string;
         let premio:number=this.apuesta*2
+        let pozo:number=10000000
 
         pos1 = Math.floor(8 * Math.random() + 1);
         pos2 = Math.floor(8 * Math.random() + 1);
@@ -54,22 +57,40 @@ export class TragamonedasAnimales extends Tragamonedas implements Casino{
         console.log(this.rodillo4[pos4]);
         console.log(this.rodillo5[pos5]);
         if (pos1 == pos2 && pos2 == pos3 && pos3 == pos4 && pos4 == pos5) {
-            resultado = "¡¡¡Ganaste $" + premio + "!!!";
-        } else {
-            resultado = "Intenta nuevamente";
+            resultado = "****JACKPOT****" + '\n' + "¡¡¡Ganaste el pozo de $" + pozo + "!!!";
+        } else if (pos2 == pos3 && pos3 == pos4){
+            resultado = "¡¡¡Doblaste tu apuesta!!!" + '\n' + "¡¡¡Ganaste $" + premio + "!!!"
+        }else{
+            resultado = "¡¡¡Vuelve a intentarlo!!!"
         }
+            
         return resultado;
     }
     
-
-    public probabilidadDeGanar(): string {
-        let n : number = 1;
+     public probabilidadDeGanar(): string {
+        let jugada : number = 1;
         let comb : number = 1/729; 
         let probabilidad : number = 1;
     
-        for (let i: number = 0; i <= n; i++) {
+        for (let i: number = 0; i <= jugada; i++) {
         probabilidad = probabilidad * comb;
         }
         return "La probabilidad es: " + probabilidad;
     }    
+
+    leerArchivo(path: string): string {
+        let archivo: string = fs.readFileSync(path, "utf-8");
+        return archivo;
+      }
+      escribirArchivo(archivo, nuevoTexto) {
+        let textoBase: string = fs.readFileSync(archivo, "utf-8");
+        textoBase += nuevoTexto;
+        fs.writeFile(archivo, textoBase, function (err) {
+          if (err) {
+            return console.log(err);
+          }
+    
+          console.log("El archivo fue creado correctamente");
+        });
+      }
 }

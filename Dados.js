@@ -13,9 +13,7 @@ var Dados = /** @class */ (function () {
         this.dado2 = Math.floor(Math.random() * (6 - 1)) + 1;
     };
     Dados.prototype.sumarDados = function () {
-        var dado1 = this.dado1;
-        var dado2 = this.dado2;
-        var suma = dado1 + dado2;
+        var suma = this.dado1 + this.dado2;
         return suma;
     };
     Dados.prototype.seleccionarJuego = function () {
@@ -37,7 +35,7 @@ var Dados = /** @class */ (function () {
         var continuar = true;
         while (intentos < 3 && continuar === true) {
             if (this.sumarDados() === numeroApostado) {
-                console.log("Felicitaciones ," + "salieron los dados" + this.dado1 + " " + this.dado2 + "ganaste");
+                console.log("Felicitaciones ," + "salieron los dados: " + this.dado1 + " " + this.dado2 + " ganaste");
                 continuar = false;
             }
             else {
@@ -61,9 +59,3 @@ var Dados = /** @class */ (function () {
     return Dados;
 }());
 exports.Dados = Dados;
-var Dados1 = new Dados();
-//console.log(Dados1.seleccionarJuego());
-Dados1.apostar(2000);
-Dados1.tirarDados();
-Dados1.sumarDados();
-Dados1.intentos(12);
