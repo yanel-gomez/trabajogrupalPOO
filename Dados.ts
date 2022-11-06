@@ -1,11 +1,6 @@
 import { Casino } from "./Casino";
-<<<<<<< HEAD
-
-export class Dados extends Casino {
-=======
 var fs = require("fs");
-export class Dados implements Casino {
->>>>>>> fd7510cce2ae4e07cdf0c264b69a7c45de946b46
+export class Dados extends Casino {
     private dado1: number;
     private dado2: number;
     protected apuesta: number;
