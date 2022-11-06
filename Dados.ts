@@ -1,6 +1,5 @@
 import { Casino } from "./Casino";
-
-
+var fs = require("fs");
 export class Dados implements Casino {
     private dado1: number;
     private dado2: number;
@@ -61,7 +60,6 @@ export class Dados implements Casino {
         }
     }
 
-   
     public probabilidadDeGanar(): string {
         let n: number = 1; //cantidad de veces que tira
         let probCara: number = 1 / 36; //probabilidad de que salga una cara del dado
@@ -72,6 +70,19 @@ export class Dados implements Casino {
         }
         return "La probabilidad es: " + probFinal;
     }
-
+    leerArchivo(path: string): string {
+        let archivo: string = fs.readFileSync(path, "utf-8");
+        return archivo;
+      }
+      escribirArchivo(archivo, nuevoTexto) {
+        let textoBase: string = fs.readFileSync(archivo, "utf-8");
+        textoBase += nuevoTexto;
+        fs.writeFile(archivo, textoBase, function (err) {
+          if (err) {
+            return console.log(err);
+          }
     
+          console.log("El archivo fue creado correctamente");
+        });
+      }
 }
