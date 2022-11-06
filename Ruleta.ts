@@ -62,6 +62,8 @@ else{
 
 //funcion a modificar: 
 public probabilidadDeGanar():string{
-return "hola";
-}
+    let tiro:number = 1;
+    let probabilidad:number = (tiro * 100 / 72);    
+    return "La probabilidad de ganar apostando 1 vez es de: % "+ probabilidad;
+    }
 }
