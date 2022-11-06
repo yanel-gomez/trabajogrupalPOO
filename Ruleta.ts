@@ -1,69 +1,111 @@
+var fs = require("fs");
 import { Casino } from "./Casino";
-export class Ruleta implements Casino{
-private posicion:number
-private colorNumero:number
-private colorRandomNumero:number
-private colorRandomColor:string;
-private apuesta:number;
+export class Ruleta extends Casino {
+  private posicion: number;
+  private colorElegido: number;
+  private colorAleatorioN: number;
+  private colorAleatorioS: string;
+  protected apuesta: number;
 
-constructor (){
-    this.posicion=0;
-    this.colorNumero=0;
-    this.colorRandomColor=""
-}
-public seleccionarJuego():string{
-    return "***Bienvenido al Juego de la Ruleta***"+'\n';
-}
-public apostar(cantidad:number):void{
-    this.apuesta = cantidad + this.apuesta
-}
-public elegirNumero(numero:number):string{
-    if (numero<=36){
-return "Número elegido: " + (this.posicion+=numero);
-}
-else{
-    return "usted ha elegido un numero incorrecto. Seleccione un número del 1 al 36 ";
-}
-}
-public elegirColor(color:string):string{
-    if (color==="negro"){
-        this.colorNumero=1;
-     return  "Color elegido: Negro ";
-    }
-    else if (color==="rojo"){
-        this.colorNumero=2;
-    return "Color elegido: Rojo ";
-    }
-    else{
-   return "Color incorrecto. Elija el color negro o rojo para apostar";
-    }
-}
-public setRandomColor():void{
-    let colorRandom= Math.floor(Math.random() * (3-1)+1)
-    if(colorRandom===1){
-         this.colorRandomNumero=1; 
-          this.colorRandomColor="negro";
-    }
-else{
-    this.colorRandomNumero=2;
-  this.colorRandomColor="rojo";
-}
-}
-public verResultados():string{ 
-    this.setRandomColor();
-  let numeroRandom= Math.floor(Math.random() * (37-1)+1); 
-  if (this.posicion<=36&&numeroRandom == this.posicion&&this.colorRandomNumero===this.colorNumero){
-    return "***FELICIDADES***" + "\n"+ "Resultados: " + numeroRandom+" "+this.colorRandomColor;
-}
-else{
- return   "INTENTE NUEVAMENTE" + "\n"+ "Resultados: "+"\n"+"Numero "+numeroRandom+" Color "+this.colorRandomColor;
-}
-}
+  constructor() {
+    super();
+    this.posicion = 0;
+    this.colorElegido = 0;
+    this.colorAleatorioS = "";
+  }
+  public seleccionarJuego(): string {
+    return "\n" + "***Bienvenido al Juego de la Ruleta***" + "\n";
+  }
 
-//funcion a modificar: 
-public probabilidadDeGanar():string{
-    let tiro:number = 1;
-    let probabilidad:number = (tiro * 100 / 72);    
-    return "La probabilidad de ganar apostando 1 vez es de: % "+ probabilidad;
+  public elegirNumero(numero: number): string {
+    if (numero <= 36) {
+      return "Número: " + (this.posicion += numero);
+    } else {
+      return (
+        "\n" +
+        "|  usted ha elegido un numero incorrecto. Seleccione un número del 1 al 36  |" +
+        "\n"
+      );
     }
+  }
+  public elegirColor(color: string): string {
+    if (color === "negro" || color === "Negro") {
+      this.colorElegido = 1;
+      return "Color: Negro ";
+    } else if (color === "rojo" || color === "Rojo") {
+      this.colorElegido = 2;
+      return "Color: Rojo ";
+    } else {
+      return "Color incorrecto. Elija el color negro o rojo para apostar";
+    }
+  }
+  public setColorAleatorio(): void {
+    let colorAleatorio = Math.floor(Math.random() * (3 - 1) + 1);
+    if (colorAleatorio === 1) {
+      this.colorAleatorioN = 1;
+      this.colorAleatorioS = "negro";
+    } else {
+      this.colorAleatorioN = 2;
+      this.colorAleatorioS = "rojo";
+    }
+  }
+  public verResultados(): string {
+    this.setColorAleatorio();
+    let numeroAleatorio = Math.floor(Math.random() * (37 - 1) + 1);
+    if (
+      this.posicion <= 36 &&
+      numeroAleatorio == this.posicion &&
+      this.colorAleatorioN === this.colorElegido
+    ) {
+      return (
+        "***FELICIDADES***" +
+        "\n" +
+        "Usted ha ganado $" +
+        this.apuesta * 2 +
+        "La bolita cayó en el número: " +
+        numeroAleatorio +
+        ", color " +
+        this.colorAleatorioS +
+        "."
+      );
+    } else {
+      return (
+        "\n" +
+        "   ---INTENTE NUEVAMENTE---   " +
+        "\n" +
+        "\n" +
+        "Usted ha perdido $" +
+        this.apuesta +
+        "\n" +
+        "Resultados: " +
+        "\n" +
+        "La bolita cayó en el número " +
+        numeroAleatorio +
+        ", color " +
+        this.colorAleatorioS +
+        "."
+      );
+    }
+  }
+
+  public probabilidadDeGanar(): string {
+    let tiro: number = 1;
+    let probabilidad: number = (tiro * 100) / 72;
+    return "La probabilidad de ganar apostando 1 vez es de: % " + probabilidad;
+  }
+  leerArchivo(path: string): string {
+    let archivo: string = fs.readFileSync(path, "utf-8");
+    return archivo;
+  }
+  escribirArchivo(archivo, nuevoTexto) {
+    let textoBase: string = fs.readFileSync(archivo, "utf-8");
+    textoBase += nuevoTexto;
+    fs.writeFile(archivo, textoBase, function (err) {
+      if (err) {
+        return console.log(err);
+      }
+
+      console.log("El archivo fue creado correctamente");
+    });
+  }
 }
