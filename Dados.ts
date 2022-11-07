@@ -34,7 +34,8 @@ export class Dados implements Casino {
         if (this.dado1 === this.dado2){
             respuesta = "Ganaste: " + (2 * this.apuesta) + " Felicidades ";
         }else{
-            respuesta = "No ganaste , intenta de nuevo "
+            respuesta = " ¡¡¡¡ Vuelva a intentarlo !!!!! "
+            this.apuesta - this.apuesta;
         }
         console.log("salieron los dados: " + this.dado1 +" "+ this.dado2);
         return respuesta
@@ -48,7 +49,7 @@ export class Dados implements Casino {
         while (intentos < 3 && continuar === true) {
             this.tirarDados()
             if ( this.sumarDados() === numeroApostado) {
-                console.log("Felicitaciones ,"+" salieron los dados: "+this.dado1+" "+this.dado2+" ganaste");
+                console.log("Felicitaciones ,"+" salieron los dados: "+this.dado1+" "+this.dado2+" ganaste:" + (this.apuesta * 4));
                 continuar = false;
             } else {
                 console.log("Salieron los dados: "+this.dado1+" "+this.dado2 +" Intenta nuevamente");
@@ -57,19 +58,20 @@ export class Dados implements Casino {
             this.tirarDados()
         }
         if (continuar === true) {
-            console.log("acabaste los intentos");
+            console.log("¡¡¡¡ Vuelva a intentarlo !!!!!");
+            this.apuesta - this.apuesta;
         }
     }
 
     public probabilidadDeGanar(): string {
-        let n: number = 1; //cantidad de veces que tira
-        let probCara: number = 1 / 36; //probabilidad de que salga una cara del dado
+        let n: number = 1; 
+        let probCara: number = 1 / 36; 
         let probFinal: number = 1;
 
         for (let i: number = 0; i <= n; i++) {
             probFinal = probFinal * probCara;
         }
-        return "La probabilidad es: " + probFinal;
+        return "La probabilidad es de : " + probFinal;
     }
     
 }
