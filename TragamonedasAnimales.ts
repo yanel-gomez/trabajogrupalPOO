@@ -1,19 +1,16 @@
-var fs = require("fs");
-
-
 import { Tragamonedas } from "./Tragamonedas";
 
 export class TragamonedasAnimales extends Tragamonedas {
-    protected tematica:string;
-    protected apuesta:number;
+    protected tematica: string;
+    protected apuesta: number;
     protected rodillo1: string[];
     protected rodillo2: string[];
     protected rodillo3: string[];
     protected rodillo4: string[];
     protected rodillo5: string[];
 
-    constructor(tem: string, bet: number){ 
-    super(tem,bet)
+    constructor(tem: string, bet: number) {
+        super(tem, bet)
 
         this.tematica = tem;
         this.apuesta = bet;
@@ -23,16 +20,16 @@ export class TragamonedasAnimales extends Tragamonedas {
         this.rodillo4 = ["Avestruz", "Conejo", "Gato", "León", "Perro", "Pingüino", "Sapo", "Serpiente", "Tortuga"]
         this.rodillo5 = ["Tortuga", "Serpiente", "Sapo", "Pingüino", "Perro", "León", "Gato", "Conejo", "Avestruz"]
     }
-    public seleccionarJuego():string{
-        return "***Bienvenido al Tragamonedas de Animales***"+'\n';
+    public seleccionarJuego(): string {
+        return '\n' + "***Bienvenido al Tragamonedas de Animales***" + '\n';
     }
 
     public verTematica(tematica: string): string {
-        tematica="Animales";
+        tematica = "Animales";
         return tematica;
     }
 
-    public apostar(cantidad:number):void{
+    public apostar(cantidad: number): void {
         this.apuesta = cantidad + this.apuesta
     }
 
@@ -42,9 +39,9 @@ export class TragamonedasAnimales extends Tragamonedas {
         let pos3: number;
         let pos4: number;
         let pos5: number;
-        let resultado:string;
-        let premio:number=this.apuesta*2
-        let pozo:number=10000000
+        let resultado: string;
+        let premio: number = this.apuesta * 2
+        let pozo: number = 10000000
 
         pos1 = Math.floor(8 * Math.random() + 1);
         pos2 = Math.floor(8 * Math.random() + 1);
@@ -57,23 +54,23 @@ export class TragamonedasAnimales extends Tragamonedas {
         console.log(this.rodillo4[pos4]);
         console.log(this.rodillo5[pos5]);
         if (pos1 == pos2 && pos2 == pos3 && pos3 == pos4 && pos4 == pos5) {
-            resultado = "****JACKPOT****" + '\n' + "¡¡¡Ganaste el pozo de $" + pozo + "!!!";
-        } else if (pos2 == pos3 && pos3 == pos4){
-            resultado = "¡¡¡Doblaste tu apuesta!!!" + '\n' + "¡¡¡Ganaste $" + premio + "!!!"
-        }else{
-            resultado = "\n"+"¡¡¡Vuelve a intentarlo!!!"
+            resultado = '\n' + "****JACKPOT****" + '\n' + "¡¡¡Ganaste el pozo de $" + pozo + "!!!" + '\n';
+        } else if (pos2 == pos3 && pos3 == pos4) {
+            resultado = '\n' + "¡¡¡Doblaste tu apuesta!!!" + '\n' + "¡¡¡Ganaste $" + premio + "!!!" + '\n';
+        } else {
+            resultado = "\n" + "¡¡¡Vuelve a intentarlo!!!" + '\n';
         }
-            
+
         return resultado;
     }
-     public probabilidadDeGanar(): string {
-        let jugada : number = 1;
-        let comb : number = 1/729; 
-        let probabilidad : number = 1;
-    
+    public probabilidadDeGanar(): string {
+        let jugada: number = 1;
+        let comb: number = 1 / 729;
+        let probabilidad: number = 1;
+
         for (let i: number = 0; i <= jugada; i++) {
-        probabilidad = probabilidad * comb;
+            probabilidad = probabilidad * comb;
         }
         return "La probabilidad es: " + probabilidad;
-    }    
+    }
 }

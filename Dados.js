@@ -1,83 +1,3 @@
-<<<<<<< HEAD
-"use strict";
-exports.__esModule = true;
-exports.Dados = void 0;
-var fs = require("fs");
-var Dados = /** @class */ (function () {
-    function Dados() {
-        this.apuesta = 0;
-    }
-    Dados.prototype.apostar = function (cantidad) {
-        this.apuesta = cantidad + this.apuesta;
-    };
-    Dados.prototype.tirarDados = function () {
-        this.dado1 = Math.floor(Math.random() * (6 - 1)) + 1;
-        this.dado2 = Math.floor(Math.random() * (6 - 1)) + 1;
-    };
-    Dados.prototype.sumarDados = function () {
-        var suma = this.dado1 + this.dado2;
-        return suma;
-    };
-    Dados.prototype.seleccionarJuego = function () {
-        return "***Bienvenido al Juego de Dados***" + '\n';
-    };
-    Dados.prototype.verResultados = function () {
-        var respuesta;
-        if (this.dado1 === this.dado2) {
-            respuesta = "Ganaste: " + (2 * this.apuesta) + " Felicidades ";
-        }
-        else {
-            respuesta = "No ganaste , intenta de nuevo ";
-        }
-        console.log("salieron los dados: " + this.dado1 + " " + this.dado2);
-        return respuesta;
-    };
-    Dados.prototype.intentos = function (numeroApostado) {
-        var intentos = 0;
-        var continuar = true;
-        while (intentos < 3 && continuar === true) {
-            this.tirarDados();
-            if (this.sumarDados() === numeroApostado) {
-                console.log("Felicitaciones ," + " salieron los dados: " + this.dado1 + " " + this.dado2 + " ganaste");
-                continuar = false;
-            }
-            else {
-                console.log("Salieron los dados: " + this.dado1 + " " + this.dado2 + " Intenta nuevamente");
-            }
-            intentos++;
-            this.tirarDados();
-        }
-        if (continuar === true) {
-            console.log("acabaste los intentos");
-        }
-    };
-    Dados.prototype.probabilidadDeGanar = function () {
-        var n = 1; //cantidad de veces que tira
-        var probCara = 1 / 36; //probabilidad de que salga una cara del dado
-        var probFinal = 1;
-        for (var i = 0; i <= n; i++) {
-            probFinal = probFinal * probCara;
-        }
-        return "La probabilidad es: " + probFinal;
-    };
-    Dados.prototype.leerArchivo = function (path) {
-        var archivo = fs.readFileSync(path, "utf-8");
-        return archivo;
-    };
-    Dados.prototype.escribirArchivo = function (archivo, nuevoTexto) {
-        var textoBase = fs.readFileSync(archivo, "utf-8");
-        textoBase += nuevoTexto;
-        fs.writeFile(archivo, textoBase, function (err) {
-            if (err) {
-                return console.log(err);
-            }
-            console.log("El archivo fue creado correctamente");
-        });
-    };
-    return Dados;
-}());
-exports.Dados = Dados;
-=======
 "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -116,7 +36,7 @@ var Dados = /** @class */ (function (_super) {
         return suma;
     };
     Dados.prototype.seleccionarJuego = function () {
-        return "***Bienvenido al Juego de Dados***" + '\n';
+        return '\n' + "***Bienvenido al Juego de Dados***" + '\n';
     };
     Dados.prototype.verResultados = function () {
         var respuesta;
@@ -124,7 +44,7 @@ var Dados = /** @class */ (function (_super) {
             respuesta = "Ganaste: " + (2 * this.apuesta) + " Felicidades ";
         }
         else {
-            respuesta = "No ganaste , intenta de nuevo ";
+            respuesta = "¡¡¡¡ Vuelva a intentarlo !!!!!";
         }
         console.log("salieron los dados: " + this.dado1 + " " + this.dado2);
         return respuesta;
@@ -134,28 +54,29 @@ var Dados = /** @class */ (function (_super) {
         var continuar = true;
         while (intentos < 3 && continuar === true) {
             if (this.sumarDados() === numeroApostado) {
-                console.log("Felicitaciones ," + "salieron los dados: " + this.dado1 + " " + this.dado2 + " ganaste");
+                console.log("Felicitaciones ," + "salieron los dados: " + this.dado1 + " " + this.dado2 + " ganaste" + this.apuesta * 4);
                 continuar = false;
             }
             else {
                 console.log("Salieron los dados: " + this.dado1 + " " + this.dado2 + " Intenta nuevamente");
             }
             intentos++;
+            this.tirarDados();
         }
         if (continuar === true) {
-            console.log("acabaste los intentos");
+            console.log("¡¡¡¡ Vuelva a intentarlo !!!!!");
+            this.apuesta - this.apuesta;
         }
     };
     Dados.prototype.probabilidadDeGanar = function () {
-        var n = 1; //cantidad de veces que tira
-        var probCara = 1 / 36; //probabilidad de que salga una cara del dado
+        var n = 1;
+        var probCara = 1 / 36;
         var probFinal = 1;
         for (var i = 0; i <= n; i++) {
             probFinal = probFinal * probCara;
         }
-        return "La probabilidad es: " + probFinal;
+        return "La probabilidad es de : " + probFinal;
     };
     return Dados;
 }(Casino_1.Casino));
 exports.Dados = Dados;
->>>>>>> 49943cb8e229401419c0eb0ebceae085a5d4a5fa

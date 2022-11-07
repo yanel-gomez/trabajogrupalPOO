@@ -13,6 +13,7 @@ export abstract class Casino {
   abstract verResultados(): string;
 
   abstract probabilidadDeGanar(): string;
+
   public leerArchivo(path: string): string {
     let archivo: string = fs.readFileSync(path, "utf-8");
     return archivo;
@@ -25,7 +26,7 @@ export abstract class Casino {
         return console.log(err);
       }
 
-      console.log("El archivo fue creado correctamente");
+      console.log("Este resultado ha sido agregado a estadísticas.");
     });
   }
 }

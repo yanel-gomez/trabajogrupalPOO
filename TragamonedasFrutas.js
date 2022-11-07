@@ -16,7 +16,6 @@ var __extends = (this && this.__extends) || (function () {
 })();
 exports.__esModule = true;
 exports.TragamonedasFrutas = void 0;
-var fs = require("fs");
 var Tragamonedas_1 = require("./Tragamonedas");
 var TragamonedasFrutas = /** @class */ (function (_super) {
     __extends(TragamonedasFrutas, _super);
@@ -28,7 +27,7 @@ var TragamonedasFrutas = /** @class */ (function (_super) {
         return _this;
     }
     TragamonedasFrutas.prototype.seleccionarJuego = function () {
-        return "***Bienvenido al Tragamonedas de Frutas***" + '\n';
+        return '\n' + "***Bienvenido al Tragamonedas de Frutas***" + '\n';
     };
     TragamonedasFrutas.prototype.verTematica = function (tematica) {
         tematica = "Frutas";
@@ -50,10 +49,10 @@ var TragamonedasFrutas = /** @class */ (function (_super) {
         console.log(this.rodillo2[pos2]);
         console.log(this.rodillo3[pos3]);
         if (pos1 == pos2 && pos2 == pos3) {
-            resultado = "¡¡¡Ganaste $" + premio + "!!!";
+            resultado = '\n' + "¡¡¡Ganaste $" + premio + "!!!";
         }
         else {
-            resultado = "Intenta nuevamente";
+            resultado = '\n' + "Intenta nuevamente";
         }
         return resultado;
     };

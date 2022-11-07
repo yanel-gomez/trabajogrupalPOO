@@ -5,12 +5,15 @@ import { Dados } from "./Dados";
 
 let Ruleta1: Ruleta = new Ruleta();
 let Trag1: TragamonedasAnimales = new TragamonedasAnimales("Animales", 0);
-let Trag2: TragamonedasFrutas = new TragamonedasFrutas("Fruits", 3000);
+let Trag2: TragamonedasFrutas = new TragamonedasFrutas("Fruits", 0);
 let Dados1: Dados = new Dados();
+
 
 var readlineSync = require("readline-sync");
 var nombre = readlineSync.question('Escriba su nombre ');
-   console.log("\n"+"Bienvenido/a " + nombre);
+console.log("\n" + "Bienvenido/a " + nombre);
+
+
 var readlineSync = require("readline-sync"),
   juegos = ["Ruleta", "Tragamonedas Animales", "Tragamonedas Frutas", "Dados"],
   index = readlineSync.keyInSelect(juegos, "Seleccione un juego");
@@ -21,8 +24,8 @@ if (index === 0) {
   Ruleta1.elegirColor("Rojo");
   Ruleta1.elegirNumero(15);
   console.log(Ruleta1.verResultados());
-Ruleta1.leerArchivo("RuletaResultados.txt");
-Ruleta1.escribirArchivo("RuletaResultados.txt", Ruleta1.verResultados())
+  Ruleta1.leerArchivo("RuletaResultados.txt");
+  Ruleta1.escribirArchivo("RuletaResultados.txt", Ruleta1.verResultados())
 } else if (index === 1) {
   console.log(Trag1.seleccionarJuego());
   Trag1.apostar(100);

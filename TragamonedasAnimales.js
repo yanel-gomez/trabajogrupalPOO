@@ -16,7 +16,6 @@ var __extends = (this && this.__extends) || (function () {
 })();
 exports.__esModule = true;
 exports.TragamonedasAnimales = void 0;
-var fs = require("fs");
 var Tragamonedas_1 = require("./Tragamonedas");
 var TragamonedasAnimales = /** @class */ (function (_super) {
     __extends(TragamonedasAnimales, _super);
@@ -32,7 +31,7 @@ var TragamonedasAnimales = /** @class */ (function (_super) {
         return _this;
     }
     TragamonedasAnimales.prototype.seleccionarJuego = function () {
-        return "***Bienvenido al Tragamonedas de Animales***" + '\n';
+        return '\n' + "***Bienvenido al Tragamonedas de Animales***" + '\n';
     };
     TragamonedasAnimales.prototype.verTematica = function (tematica) {
         tematica = "Animales";
@@ -61,13 +60,13 @@ var TragamonedasAnimales = /** @class */ (function (_super) {
         console.log(this.rodillo4[pos4]);
         console.log(this.rodillo5[pos5]);
         if (pos1 == pos2 && pos2 == pos3 && pos3 == pos4 && pos4 == pos5) {
-            resultado = "****JACKPOT****" + '\n' + "¡¡¡Ganaste el pozo de $" + pozo + "!!!";
+            resultado = '\n' + "****JACKPOT****" + '\n' + "¡¡¡Ganaste el pozo de $" + pozo + "!!!" + '\n';
         }
         else if (pos2 == pos3 && pos3 == pos4) {
-            resultado = "¡¡¡Doblaste tu apuesta!!!" + '\n' + "¡¡¡Ganaste $" + premio + "!!!";
+            resultado = '\n' + "¡¡¡Doblaste tu apuesta!!!" + '\n' + "¡¡¡Ganaste $" + premio + "!!!" + '\n';
         }
         else {
-            resultado = "\n" + "¡¡¡Vuelve a intentarlo!!!";
+            resultado = "\n" + "¡¡¡Vuelve a intentarlo!!!" + '\n';
         }
         return resultado;
     };
