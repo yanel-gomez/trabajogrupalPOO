@@ -21,7 +21,7 @@ var Casino = /** @class */ (function () {
             if (err) {
                 return console.log(err);
             }
-            console.log("El archivo fue creado correctamente");
+            console.log("Este resultado ha sido agregado a estadísticas.");
         });
     };
     return Casino;

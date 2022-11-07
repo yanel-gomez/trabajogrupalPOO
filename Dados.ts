@@ -20,36 +20,36 @@ export class Dados extends Casino {
     }
 
     public sumarDados(): number {
-        let suma:number = this.dado1 + this.dado2;
+        let suma: number = this.dado1 + this.dado2;
         return suma
     }
 
     public seleccionarJuego(): string {
-        return "***Bienvenido al Juego de Dados***" + '\n';
+        return '\n' + "***Bienvenido al Juego de Dados***" + '\n';
     }
 
     public verResultados(): string {
         let respuesta: string;
-        if (this.dado1 === this.dado2){
+        if (this.dado1 === this.dado2) {
             respuesta = "Ganaste: " + (2 * this.apuesta) + " Felicidades ";
-        }else{
+        } else {
             respuesta = "No ganaste , intenta de nuevo "
         }
-        console.log("salieron los dados: " + this.dado1 +" "+ this.dado2);
+        console.log("salieron los dados: " + this.dado1 + " " + this.dado2);
         return respuesta
     }
 
 
-    public intentos(numeroApostado: number):void {
+    public intentos(numeroApostado: number): void {
         let intentos: number = 0;
         let continuar: boolean = true
 
         while (intentos < 3 && continuar === true) {
             if (this.sumarDados() === numeroApostado) {
-                console.log("Felicitaciones ,"+"salieron los dados: "+this.dado1+" "+this.dado2+" ganaste");
+                console.log("Felicitaciones ," + "salieron los dados: " + this.dado1 + " " + this.dado2 + " ganaste");
                 continuar = false;
             } else {
-                console.log("Salieron los dados: "+this.dado1+" "+this.dado2 +" Intenta nuevamente");
+                console.log("Salieron los dados: " + this.dado1 + " " + this.dado2 + " Intenta nuevamente");
             }
             intentos++;
         }

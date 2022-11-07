@@ -36,7 +36,7 @@ var Dados = /** @class */ (function (_super) {
         return suma;
     };
     Dados.prototype.seleccionarJuego = function () {
-        return "***Bienvenido al Juego de Dados***" + '\n';
+        return '\n' + "***Bienvenido al Juego de Dados***" + '\n';
     };
     Dados.prototype.verResultados = function () {
         var respuesta;

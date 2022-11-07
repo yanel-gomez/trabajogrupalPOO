@@ -69,13 +69,13 @@ export class Ruleta extends Casino {
       );
     } else {
       return (
-      
+
         "\n" +
         "La bolita cayó en el número " +
         numeroAleatorio +
         ", color " +
         this.colorAleatorioS +
-        "." +  "\n" +
+        "." + "\n" +
         "¡¡¡Vuelve a intentarlo!!!" + "\n"
       );
     }
