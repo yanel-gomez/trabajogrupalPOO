@@ -32,7 +32,7 @@ var TragamonedasAnimales = /** @class */ (function (_super) {
         return _this;
     }
     TragamonedasAnimales.prototype.seleccionarJuego = function () {
-        return "Bienvenido al Tragamonedas de Animales" + '\n';
+        return "***Bienvenido al Tragamonedas de Animales***" + '\n';
     };
     TragamonedasAnimales.prototype.verTematica = function (tematica) {
         tematica = "Animales";

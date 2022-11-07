@@ -28,7 +28,7 @@ var TragamonedasFrutas = /** @class */ (function (_super) {
         return _this;
     }
     TragamonedasFrutas.prototype.seleccionarJuego = function () {
-        return "Bienvenido al Tragamonedas de Frutas" + '\n';
+        return "***Bienvenido al Tragamonedas de Frutas***" + '\n';
     };
     TragamonedasFrutas.prototype.verTematica = function (tematica) {
         tematica = "Frutas";

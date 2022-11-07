@@ -24,7 +24,7 @@ export class TragamonedasAnimales extends Tragamonedas{
         this.rodillo5 = ["Tortuga", "Serpiente", "Sapo", "Pingüino", "Perro", "León", "Gato", "Conejo", "Avestruz"]
     }
     public seleccionarJuego():string{
-        return "Bienvenido al Tragamonedas de Animales"+'\n';
+        return "***Bienvenido al Tragamonedas de Animales***"+'\n';
     }
 
     public verTematica(tematica: string): string {
