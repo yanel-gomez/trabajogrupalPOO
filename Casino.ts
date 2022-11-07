@@ -17,7 +17,7 @@ export abstract class Casino {
     let archivo: string = fs.readFileSync(path, "utf-8");
     return archivo;
   }
-  public escribirArchivo(archivo, nuevoTexto) {
+  public escribirArchivo(archivo:string, nuevoTexto:string) {
     let textoBase: string = fs.readFileSync(archivo, "utf-8");
     textoBase += nuevoTexto;
     fs.writeFile(archivo, textoBase, function (err) {
