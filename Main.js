@@ -21,3 +21,5 @@ Dados1.apostar(2000);
 Dados1.tirarDados();
 console.log(Dados1.sumarDados());
 //Dados1.intentos(3);
+Dados1.leerArchivo("ResultadosDados.txt");
+console.log(Dados1.escribirArchivo("ResultadosDados.txt", Dados1.verResultados()));

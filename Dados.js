@@ -1,6 +1,7 @@
 "use strict";
 exports.__esModule = true;
 exports.Dados = void 0;
+var fs = require("fs");
 var Dados = /** @class */ (function () {
     function Dados() {
         this.apuesta = 0;
@@ -50,8 +51,27 @@ var Dados = /** @class */ (function () {
         }
     };
     Dados.prototype.probabilidadDeGanar = function () {
-        var h = "";
-        return h;
+        var n = 1; //cantidad de veces que tira
+        var probCara = 1 / 36; //probabilidad de que salga una cara del dado
+        var probFinal = 1;
+        for (var i = 0; i <= n; i++) {
+            probFinal = probFinal * probCara;
+        }
+        return "La probabilidad es: " + probFinal;
+    };
+    Dados.prototype.leerArchivo = function (path) {
+        var archivo = fs.readFileSync(path, "utf-8");
+        return archivo;
+    };
+    Dados.prototype.escribirArchivo = function (archivo, nuevoTexto) {
+        var textoBase = fs.readFileSync(archivo, "utf-8");
+        textoBase += nuevoTexto;
+        fs.writeFile(archivo, textoBase, function (err) {
+            if (err) {
+                return console.log(err);
+            }
+            console.log("El archivo fue creado correctamente");
+        });
     };
     return Dados;
 }());
