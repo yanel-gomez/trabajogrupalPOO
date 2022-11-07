@@ -67,7 +67,7 @@ var TragamonedasAnimales = /** @class */ (function (_super) {
             resultado = "¡¡¡Doblaste tu apuesta!!!" + '\n' + "¡¡¡Ganaste $" + premio + "!!!";
         }
         else {
-            resultado = "¡¡¡Vuelve a intentarlo!!!";
+            resultado = "\n" + "¡¡¡Vuelve a intentarlo!!!";
         }
         return resultado;
     };
@@ -79,20 +79,6 @@ var TragamonedasAnimales = /** @class */ (function (_super) {
             probabilidad = probabilidad * comb;
         }
         return "La probabilidad es: " + probabilidad;
-    };
-    TragamonedasAnimales.prototype.leerArchivo = function (path) {
-        var archivo = fs.readFileSync(path, "utf-8");
-        return archivo;
-    };
-    TragamonedasAnimales.prototype.escribirArchivo = function (archivo, nuevoTexto) {
-        var textoBase = fs.readFileSync(archivo, "utf-8");
-        textoBase += nuevoTexto;
-        fs.writeFile(archivo, textoBase, function (err) {
-            if (err) {
-                return console.log(err);
-            }
-            console.log("El archivo fue creado correctamente");
-        });
     };
     return TragamonedasAnimales;
 }(Tragamonedas_1.Tragamonedas));

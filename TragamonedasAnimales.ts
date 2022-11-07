@@ -3,7 +3,7 @@ var fs = require("fs");
 
 import { Tragamonedas } from "./Tragamonedas";
 
-export class TragamonedasAnimales extends Tragamonedas{
+export class TragamonedasAnimales extends Tragamonedas {
     protected tematica:string;
     protected apuesta:number;
     protected rodillo1: string[];
@@ -61,12 +61,11 @@ export class TragamonedasAnimales extends Tragamonedas{
         } else if (pos2 == pos3 && pos3 == pos4){
             resultado = "¡¡¡Doblaste tu apuesta!!!" + '\n' + "¡¡¡Ganaste $" + premio + "!!!"
         }else{
-            resultado = "¡¡¡Vuelve a intentarlo!!!"
+            resultado = "\n"+"¡¡¡Vuelve a intentarlo!!!"
         }
             
         return resultado;
     }
-    
      public probabilidadDeGanar(): string {
         let jugada : number = 1;
         let comb : number = 1/729; 
@@ -77,20 +76,4 @@ export class TragamonedasAnimales extends Tragamonedas{
         }
         return "La probabilidad es: " + probabilidad;
     }    
-
-    leerArchivo(path: string): string {
-        let archivo: string = fs.readFileSync(path, "utf-8");
-        return archivo;
-      }
-      escribirArchivo(archivo, nuevoTexto) {
-        let textoBase: string = fs.readFileSync(archivo, "utf-8");
-        textoBase += nuevoTexto;
-        fs.writeFile(archivo, textoBase, function (err) {
-          if (err) {
-            return console.log(err);
-          }
-    
-          console.log("El archivo fue creado correctamente");
-        });
-      }
 }

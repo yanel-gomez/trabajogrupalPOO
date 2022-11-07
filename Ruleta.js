@@ -16,7 +16,6 @@ var __extends = (this && this.__extends) || (function () {
 })();
 exports.__esModule = true;
 exports.Ruleta = void 0;
-var fs = require("fs");
 var Casino_1 = require("./Casino");
 var Ruleta = /** @class */ (function (_super) {
     __extends(Ruleta, _super);
@@ -86,28 +85,14 @@ var Ruleta = /** @class */ (function (_super) {
                 numeroAleatorio +
                 ", color " +
                 this.colorAleatorioS +
-                "." + "\n" + "\n" +
-                "¡¡¡Vuelve a intentarlo!!!");
+                "." + "\n" +
+                "¡¡¡Vuelve a intentarlo!!!" + "\n");
         }
     };
     Ruleta.prototype.probabilidadDeGanar = function () {
         var tiro = 1;
         var probabilidad = (tiro * 100) / 72;
         return "La probabilidad de ganar apostando 1 vez es de: % " + probabilidad;
-    };
-    Ruleta.prototype.leerArchivo = function (path) {
-        var archivo = fs.readFileSync(path, "utf-8");
-        return archivo;
-    };
-    Ruleta.prototype.escribirArchivo = function (archivo, nuevoTexto) {
-        var textoBase = fs.readFileSync(archivo, "utf-8");
-        textoBase += nuevoTexto;
-        fs.writeFile(archivo, textoBase, function (err) {
-            if (err) {
-                return console.log(err);
-            }
-            console.log("El archivo fue creado correctamente");
-        });
     };
     return Ruleta;
 }(Casino_1.Casino));

@@ -17,7 +17,6 @@ var __extends = (this && this.__extends) || (function () {
 exports.__esModule = true;
 exports.Dados = void 0;
 var Casino_1 = require("./Casino");
-var fs = require("fs");
 var Dados = /** @class */ (function (_super) {
     __extends(Dados, _super);
     function Dados() {
@@ -75,20 +74,6 @@ var Dados = /** @class */ (function (_super) {
             probFinal = probFinal * probCara;
         }
         return "La probabilidad es: " + probFinal;
-    };
-    Dados.prototype.leerArchivo = function (path) {
-        var archivo = fs.readFileSync(path, "utf-8");
-        return archivo;
-    };
-    Dados.prototype.escribirArchivo = function (archivo, nuevoTexto) {
-        var textoBase = fs.readFileSync(archivo, "utf-8");
-        textoBase += nuevoTexto;
-        fs.writeFile(archivo, textoBase, function (err) {
-            if (err) {
-                return console.log(err);
-            }
-            console.log("El archivo fue creado correctamente");
-        });
     };
     return Dados;
 }(Casino_1.Casino));

@@ -1,16 +1,31 @@
-export abstract class Casino{
-    protected  nombre:string;
-    protected  apuesta:number;
-      constructor(){
-          this.nombre = "Status";
-          this.apuesta=0;
+var fs = require("fs")
+export abstract class Casino {
+  protected nombre: string;
+  protected apuesta: number;
+  constructor() {
+    this.nombre = "Status";
+    this.apuesta = 0;
+  }
+  abstract seleccionarJuego();
+  apostar(cantidad: number): void {
+    this.apuesta += cantidad;
+  }
+  abstract verResultados(): string;
+
+  abstract probabilidadDeGanar(): string;
+  public leerArchivo(path: string): string {
+    let archivo: string = fs.readFileSync(path, "utf-8");
+    return archivo;
+  }
+  public escribirArchivo(archivo, nuevoTexto) {
+    let textoBase: string = fs.readFileSync(archivo, "utf-8");
+    textoBase += nuevoTexto;
+    fs.writeFile(archivo, textoBase, function (err) {
+      if (err) {
+        return console.log(err);
       }
-      abstract seleccionarJuego()
-      apostar(cantidad:number):void{
-      this.apuesta +=cantidad;
-      }
-      abstract verResultados():string;
-      
-      abstract probabilidadDeGanar():string
-  
-      }
+
+      console.log("El archivo fue creado correctamente");
+    });
+  }
+}

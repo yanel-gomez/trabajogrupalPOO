@@ -1,1 +1,7 @@
 RESULTADOS:
+
+La bolita cayó en el número 21, color negro.
+¡¡¡Vuelve a intentarlo!!!
+
+La bolita cayó en el número 4, color rojo.
+¡¡¡Vuelve a intentarlo!!!

@@ -66,20 +66,6 @@ var TragamonedasFrutas = /** @class */ (function (_super) {
         }
         return "La probabilidad es: " + probabilidad;
     };
-    TragamonedasFrutas.prototype.leerArchivo = function (path) {
-        var archivo = fs.readFileSync(path, "utf-8");
-        return archivo;
-    };
-    TragamonedasFrutas.prototype.escribirArchivo = function (archivo, nuevoTexto) {
-        var textoBase = fs.readFileSync(archivo, "utf-8");
-        textoBase += nuevoTexto;
-        fs.writeFile(archivo, textoBase, function (err) {
-            if (err) {
-                return console.log(err);
-            }
-            console.log("El archivo fue creado correctamente");
-        });
-    };
     return TragamonedasFrutas;
 }(Tragamonedas_1.Tragamonedas));
 exports.TragamonedasFrutas = TragamonedasFrutas;
