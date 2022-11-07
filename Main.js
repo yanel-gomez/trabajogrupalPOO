@@ -22,7 +22,7 @@ if (index === 0) {
 }
 else if (index === 1) {
     console.log(Trag1.seleccionarJuego());
-    Trag1.apostar(2500);
+    Trag1.apostar(100);
     console.log(Trag1.verResultados());
 }
 else if (index === 2) {

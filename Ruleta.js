@@ -82,19 +82,12 @@ var Ruleta = /** @class */ (function (_super) {
         }
         else {
             return ("\n" +
-                "   ---INTENTE NUEVAMENTE---   " +
-                "\n" +
-                "\n" +
-                "Usted ha perdido $" +
-                this.apuesta +
-                "\n" +
-                "Resultados: " +
-                "\n" +
                 "La bolita cayó en el número " +
                 numeroAleatorio +
                 ", color " +
                 this.colorAleatorioS +
-                ".");
+                "." + "\n" + "\n" +
+                "¡¡¡Vuelve a intentarlo!!!");
         }
     };
     Ruleta.prototype.probabilidadDeGanar = function () {

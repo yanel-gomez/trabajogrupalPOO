@@ -70,24 +70,17 @@ export class Ruleta extends Casino {
       );
     } else {
       return (
-        "\n" +
-        "   ---INTENTE NUEVAMENTE---   " +
-        "\n" +
-        "\n" +
-        "Usted ha perdido $" +
-        this.apuesta +
-        "\n" +
-        "Resultados: " +
+      
         "\n" +
         "La bolita cayó en el número " +
         numeroAleatorio +
         ", color " +
         this.colorAleatorioS +
-        "."
+        "." +  "\n" + "\n"+
+        "¡¡¡Vuelve a intentarlo!!!"
       );
     }
   }
-
   public probabilidadDeGanar(): string {
     let tiro: number = 1;
     let probabilidad: number = (tiro * 100) / 72;
