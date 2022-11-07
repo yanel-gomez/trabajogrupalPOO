@@ -8,6 +8,9 @@ var Ruleta1 = new Ruleta_1.Ruleta();
 var Trag1 = new TragamonedasAnimales_1.TragamonedasAnimales("Animales", 200);
 var Trag2 = new TragamonedasFrutas_1.TragamonedasFrutas("Fruits", 3000);
 var Dados1 = new Dados_1.Dados();
+var readlineSync = require("readline-sync");
+var nombre = readlineSync.question('Escriba su nombre ');
+console.log("\n" + "Bienvenido/a " + nombre);
 var readlineSync = require("readline-sync"), juegos = ["Ruleta", "Tragamonedas Animales", "Tragamonedas Frutas", "Dados"], index = readlineSync.keyInSelect(juegos, "Seleccione un juego");
 console.log("Usted ha seleccionado el juego " + juegos[index] + "." + "\n");
 if (index === 0) {
@@ -38,4 +41,3 @@ else if (index === 3) {
 else {
     console.log("Seleccione un número válido.");
 }
-console.log(index);
