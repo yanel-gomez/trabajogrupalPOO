@@ -65,7 +65,7 @@ export class TragamonedasAnimales extends Tragamonedas {
     }
     public probabilidadDeGanar(): string {
         let jugada: number = 1;
-        let comb: number = 1 / 729;
+        let comb: number = 1 / 59049;
         let probabilidad: number = 1;
 
         for (let i: number = 0; i <= jugada; i++) {
