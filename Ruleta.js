@@ -1,64 +1,121 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 exports.__esModule = true;
 exports.Ruleta = void 0;
-var Ruleta = /** @class */ (function () {
+var fs = require("fs");
+var Casino_1 = require("./Casino");
+var Ruleta = /** @class */ (function (_super) {
+    __extends(Ruleta, _super);
     function Ruleta() {
-        this.posicion = 0;
-        this.colorNumero = 0;
-        this.colorRandomColor = "";
+        var _this = _super.call(this) || this;
+        _this.posicion = 0;
+        _this.colorElegido = 0;
+        _this.colorAleatorioS = "";
+        return _this;
     }
     Ruleta.prototype.seleccionarJuego = function () {
-        return "***Bienvenido al Juego de la Ruleta***" + '\n';
-    };
-    Ruleta.prototype.apostar = function (cantidad) {
-        this.apuesta = cantidad + this.apuesta;
+        return "\n" + "***Bienvenido al Juego de la Ruleta***" + "\n";
     };
     Ruleta.prototype.elegirNumero = function (numero) {
         if (numero <= 36) {
-            return "Número elegido: " + (this.posicion += numero);
+            return "Número: " + (this.posicion += numero);
         }
         else {
-            return "usted ha elegido un numero incorrecto. Seleccione un número del 1 al 36 ";
+            return ("\n" +
+                "|  usted ha elegido un numero incorrecto. Seleccione un número del 1 al 36  |" +
+                "\n");
         }
     };
     Ruleta.prototype.elegirColor = function (color) {
-        if (color === "negro") {
-            this.colorNumero = 1;
-            return "Color elegido: Negro ";
+        if (color === "negro" || color === "Negro") {
+            this.colorElegido = 1;
+            return "Color: Negro ";
         }
-        else if (color === "rojo") {
-            this.colorNumero = 2;
-            return "Color elegido: Rojo ";
+        else if (color === "rojo" || color === "Rojo") {
+            this.colorElegido = 2;
+            return "Color: Rojo ";
         }
         else {
             return "Color incorrecto. Elija el color negro o rojo para apostar";
         }
     };
-    Ruleta.prototype.setRandomColor = function () {
-        var colorRandom = Math.floor(Math.random() * (3 - 1) + 1);
-        if (colorRandom === 1) {
-            this.colorRandomNumero = 1;
-            this.colorRandomColor = "negro";
+    Ruleta.prototype.setColorAleatorio = function () {
+        var colorAleatorio = Math.floor(Math.random() * (3 - 1) + 1);
+        if (colorAleatorio === 1) {
+            this.colorAleatorioN = 1;
+            this.colorAleatorioS = "negro";
         }
         else {
-            this.colorRandomNumero = 2;
-            this.colorRandomColor = "rojo";
+            this.colorAleatorioN = 2;
+            this.colorAleatorioS = "rojo";
         }
     };
     Ruleta.prototype.verResultados = function () {
-        this.setRandomColor();
-        var numeroRandom = Math.floor(Math.random() * (37 - 1) + 1);
-        if (this.posicion <= 36 && numeroRandom == this.posicion && this.colorRandomNumero === this.colorNumero) {
-            return "***FELICIDADES***" + "\n" + "Resultados: " + numeroRandom + " " + this.colorRandomColor;
+        this.setColorAleatorio();
+        var numeroAleatorio = Math.floor(Math.random() * (37 - 1) + 1);
+        if (this.posicion <= 36 &&
+            numeroAleatorio == this.posicion &&
+            this.colorAleatorioN === this.colorElegido) {
+            return ("***FELICIDADES***" +
+                "\n" +
+                "Usted ha ganado $" +
+                this.apuesta * 2 +
+                "La bolita cayó en el número: " +
+                numeroAleatorio +
+                ", color " +
+                this.colorAleatorioS +
+                ".");
         }
         else {
-            return "INTENTE NUEVAMENTE" + "\n" + "Resultados: " + "\n" + "Numero " + numeroRandom + " Color " + this.colorRandomColor;
+            return ("\n" +
+                "   ---INTENTE NUEVAMENTE---   " +
+                "\n" +
+                "\n" +
+                "Usted ha perdido $" +
+                this.apuesta +
+                "\n" +
+                "Resultados: " +
+                "\n" +
+                "La bolita cayó en el número " +
+                numeroAleatorio +
+                ", color " +
+                this.colorAleatorioS +
+                ".");
         }
     };
-    //funcion a modificar: 
     Ruleta.prototype.probabilidadDeGanar = function () {
-        return "hola";
+        var tiro = 1;
+        var probabilidad = (tiro * 100) / 72;
+        return "La probabilidad de ganar apostando 1 vez es de: % " + probabilidad;
+    };
+    Ruleta.prototype.leerArchivo = function (path) {
+        var archivo = fs.readFileSync(path, "utf-8");
+        return archivo;
+    };
+    Ruleta.prototype.escribirArchivo = function (archivo, nuevoTexto) {
+        var textoBase = fs.readFileSync(archivo, "utf-8");
+        textoBase += nuevoTexto;
+        fs.writeFile(archivo, textoBase, function (err) {
+            if (err) {
+                return console.log(err);
+            }
+            console.log("El archivo fue creado correctamente");
+        });
     };
     return Ruleta;
-}());
+}(Casino_1.Casino));
 exports.Ruleta = Ruleta;

@@ -18,5 +18,8 @@
   "homepage": "https://github.com/yanel-gomez/trabajogrupalPOO#readme",
   "devDependencies": {
     "@types/node": "^18.11.9"
+  },
+  "dependencies": {
+    "readline-sync": "^1.4.10"
   }
 }

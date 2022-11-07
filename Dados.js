@@ -1,9 +1,29 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 exports.__esModule = true;
 exports.Dados = void 0;
-var Dados = /** @class */ (function () {
+var Casino_1 = require("./Casino");
+var fs = require("fs");
+var Dados = /** @class */ (function (_super) {
+    __extends(Dados, _super);
     function Dados() {
-        this.apuesta = 0;
+        var _this = _super.call(this) || this;
+        _this.apuesta = 0;
+        return _this;
     }
     Dados.prototype.apostar = function (cantidad) {
         this.apuesta = cantidad + this.apuesta;
@@ -56,6 +76,20 @@ var Dados = /** @class */ (function () {
         }
         return "La probabilidad es: " + probFinal;
     };
+    Dados.prototype.leerArchivo = function (path) {
+        var archivo = fs.readFileSync(path, "utf-8");
+        return archivo;
+    };
+    Dados.prototype.escribirArchivo = function (archivo, nuevoTexto) {
+        var textoBase = fs.readFileSync(archivo, "utf-8");
+        textoBase += nuevoTexto;
+        fs.writeFile(archivo, textoBase, function (err) {
+            if (err) {
+                return console.log(err);
+            }
+            console.log("El archivo fue creado correctamente");
+        });
+    };
     return Dados;
-}());
+}(Casino_1.Casino));
 exports.Dados = Dados;

@@ -16,6 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 exports.__esModule = true;
 exports.TragamonedasAnimales = void 0;
+var fs = require("fs");
 var Tragamonedas_1 = require("./Tragamonedas");
 var TragamonedasAnimales = /** @class */ (function (_super) {
     __extends(TragamonedasAnimales, _super);
@@ -48,6 +49,7 @@ var TragamonedasAnimales = /** @class */ (function (_super) {
         var pos5;
         var resultado;
         var premio = this.apuesta * 2;
+        var pozo = 10000000;
         pos1 = Math.floor(8 * Math.random() + 1);
         pos2 = Math.floor(8 * Math.random() + 1);
         pos3 = Math.floor(8 * Math.random() + 1);
@@ -59,21 +61,38 @@ var TragamonedasAnimales = /** @class */ (function (_super) {
         console.log(this.rodillo4[pos4]);
         console.log(this.rodillo5[pos5]);
         if (pos1 == pos2 && pos2 == pos3 && pos3 == pos4 && pos4 == pos5) {
-            resultado = "¡¡¡Ganaste $" + premio + "!!!";
+            resultado = "****JACKPOT****" + '\n' + "¡¡¡Ganaste el pozo de $" + pozo + "!!!";
+        }
+        else if (pos2 == pos3 && pos3 == pos4) {
+            resultado = "¡¡¡Doblaste tu apuesta!!!" + '\n' + "¡¡¡Ganaste $" + premio + "!!!";
         }
         else {
-            resultado = "Intenta nuevamente";
+            resultado = "¡¡¡Vuelve a intentarlo!!!";
         }
         return resultado;
     };
     TragamonedasAnimales.prototype.probabilidadDeGanar = function () {
-        var n = 1;
+        var jugada = 1;
         var comb = 1 / 729;
         var probabilidad = 1;
-        for (var i = 0; i <= n; i++) {
+        for (var i = 0; i <= jugada; i++) {
             probabilidad = probabilidad * comb;
         }
         return "La probabilidad es: " + probabilidad;
+    };
+    TragamonedasAnimales.prototype.leerArchivo = function (path) {
+        var archivo = fs.readFileSync(path, "utf-8");
+        return archivo;
+    };
+    TragamonedasAnimales.prototype.escribirArchivo = function (archivo, nuevoTexto) {
+        var textoBase = fs.readFileSync(archivo, "utf-8");
+        textoBase += nuevoTexto;
+        fs.writeFile(archivo, textoBase, function (err) {
+            if (err) {
+                return console.log(err);
+            }
+            console.log("El archivo fue creado correctamente");
+        });
     };
     return TragamonedasAnimales;
 }(Tragamonedas_1.Tragamonedas));
