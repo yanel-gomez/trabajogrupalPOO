@@ -1,7 +1,9 @@
-import { Casino } from "./Casino";
+var fs = require("fs");
+
+
 import { Tragamonedas } from "./Tragamonedas";
 
-export class TragamonedasFrutas extends Tragamonedas implements Casino{
+export class TragamonedasFrutas extends Tragamonedas{
 
     protected rodillo1: string[];
     protected rodillo2: string[];
@@ -14,7 +16,7 @@ export class TragamonedasFrutas extends Tragamonedas implements Casino{
         this.rodillo3 = ["Uvas","Naranja","Manzana","Limón","Kiwi","Frutilla","Cerezas","Banana","Arándanos"]
     }
     public seleccionarJuego():string{
-        return "Bienvenido al Tragamonedas de Frutas"+'\n';
+        return "***Bienvenido al Tragamonedas de Frutas***"+'\n';
     }
 
     public verTematica(tematica: string): string {
@@ -57,5 +59,6 @@ export class TragamonedasFrutas extends Tragamonedas implements Casino{
         }
         return "La probabilidad es: " + probabilidad;
     }
+
 }
     

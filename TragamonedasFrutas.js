@@ -16,6 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 exports.__esModule = true;
 exports.TragamonedasFrutas = void 0;
+var fs = require("fs");
 var Tragamonedas_1 = require("./Tragamonedas");
 var TragamonedasFrutas = /** @class */ (function (_super) {
     __extends(TragamonedasFrutas, _super);
@@ -27,7 +28,7 @@ var TragamonedasFrutas = /** @class */ (function (_super) {
         return _this;
     }
     TragamonedasFrutas.prototype.seleccionarJuego = function () {
-        return "Bienvenido al Tragamonedas de Frutas" + '\n';
+        return "***Bienvenido al Tragamonedas de Frutas***" + '\n';
     };
     TragamonedasFrutas.prototype.verTematica = function (tematica) {
         tematica = "Frutas";

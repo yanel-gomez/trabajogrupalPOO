@@ -1,4 +1,3 @@
-var fs = require("fs");
 import { Casino } from "./Casino";
 export class Ruleta extends Casino {
   private posicion: number;
@@ -70,42 +69,21 @@ export class Ruleta extends Casino {
       );
     } else {
       return (
-        "\n" +
-        "   ---INTENTE NUEVAMENTE---   " +
-        "\n" +
-        "\n" +
-        "Usted ha perdido $" +
-        this.apuesta +
-        "\n" +
-        "Resultados: " +
+      
         "\n" +
         "La bolita cayó en el número " +
         numeroAleatorio +
         ", color " +
         this.colorAleatorioS +
-        "."
+        "." +  "\n" +
+        "¡¡¡Vuelve a intentarlo!!!" + "\n"
       );
     }
   }
-
   public probabilidadDeGanar(): string {
     let tiro: number = 1;
     let probabilidad: number = (tiro * 100) / 72;
     return "La probabilidad de ganar apostando 1 vez es de: % " + probabilidad;
   }
-  leerArchivo(path: string): string {
-    let archivo: string = fs.readFileSync(path, "utf-8");
-    return archivo;
-  }
-  escribirArchivo(archivo, nuevoTexto) {
-    let textoBase: string = fs.readFileSync(archivo, "utf-8");
-    textoBase += nuevoTexto;
-    fs.writeFile(archivo, textoBase, function (err) {
-      if (err) {
-        return console.log(err);
-      }
 
-      console.log("El archivo fue creado correctamente");
-    });
-  }
 }
