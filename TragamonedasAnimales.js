@@ -72,7 +72,7 @@ var TragamonedasAnimales = /** @class */ (function (_super) {
     };
     TragamonedasAnimales.prototype.probabilidadDeGanar = function () {
         var jugada = 1;
-        var comb = 1 / 729;
+        var comb = 1 / 59049;
         var probabilidad = 1;
         for (var i = 0; i <= jugada; i++) {
             probabilidad = probabilidad * comb;

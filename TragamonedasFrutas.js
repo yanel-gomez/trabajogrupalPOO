@@ -49,10 +49,10 @@ var TragamonedasFrutas = /** @class */ (function (_super) {
         console.log(this.rodillo2[pos2]);
         console.log(this.rodillo3[pos3]);
         if (pos1 == pos2 && pos2 == pos3) {
-            resultado = '\n' + "¡¡¡Ganaste $" + premio + "!!!";
+            resultado = '\n' + "¡¡¡Ganaste $" + premio + "!!!" + '\n';
         }
         else {
-            resultado = '\n' + "Intenta nuevamente";
+            resultado = "\n" + "¡¡¡Vuelve a intentarlo!!!" + '\n';
         }
         return resultado;
     };
