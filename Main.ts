@@ -23,9 +23,9 @@ if (index === 0) {
   let apuesta = readlineSync.question(colors.bgMagenta('Ingrese su apuesta: $'));
   parseInt(apuesta);
   Ruleta1.apostar(apuesta);
-  let color = readlineSync.question('Seleccione un color ' + " rojo o negro: ");
-  Ruleta1.elegirColor(color);
-  let numero = readlineSync.question('Seleccione un numero ' + " entre 1 y 36 : ");
+  let color = readlineSync.question('Seleccione un color' + " rojo o negro: ");
+  console.log(Ruleta1.elegirColor(color));
+  let numero = readlineSync.question('Seleccione un numero' + " entre 1 y 36 : ");
   parseInt(numero);
   Ruleta1.elegirNumero(numero);
   console.log(colors.green(Ruleta1.verResultados()));
